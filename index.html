@@ -4,20 +4,19 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.2">
+<meta name="generator" content="Asciidoctor 1.5.5">
 <title>GoodData SDK Cookbook</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
-/* Remove the comments around the @import statement below when using this as a custom stylesheet */
-/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400";*/
+/* Remove comment around @import statement below when using as a custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
 audio,canvas,video{display:inline-block}
 audio:not([controls]){display:none;height:0}
 [hidden],template{display:none}
 script{display:none!important}
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
-body{margin:0}
 a{background:transparent}
 a:focus{outline:thin dotted}
 a:active,a:hover{outline:0}
@@ -52,12 +51,11 @@ textarea{overflow:auto;vertical-align:top}
 table{border-collapse:collapse;border-spacing:0}
 *,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
 html,body{font-size:100%}
-body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
 a:hover{cursor:pointer}
 img,object,embed{max-width:100%;height:auto}
 object,embed{height:100%}
 img{-ms-interpolation-mode:bicubic}
-#map_canvas img,#map_canvas embed,#map_canvas object,.map_canvas img,.map_canvas embed,.map_canvas object{max-width:none!important}
 .left{float:left!important}
 .right{float:right!important}
 .text-left{text-align:left!important}
@@ -65,10 +63,11 @@ img{-ms-interpolation-mode:bicubic}
 .text-center{text-align:center!important}
 .text-justify{text-align:justify!important}
 .hide{display:none}
-.antialiased,body{-webkit-font-smoothing:antialiased}
-img{display:inline-block;vertical-align:middle}
+img,object,svg{display:inline-block;vertical-align:middle}
 textarea{height:auto;min-height:50px}
 select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.spread{width:100%}
 p.lead,.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{font-size:1.21875em;line-height:1.6}
 .subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
 div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
@@ -111,7 +110,8 @@ blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
 h1{font-size:2.75em}
 h2{font-size:2.3125em}
 h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
-h4{font-size:1.4375em}}table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
 table thead,table tfoot{background:#f7f8f7;font-weight:bold}
 table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
 table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
@@ -121,10 +121,14 @@ h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-s
 h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
 .clearfix:before,.clearfix:after,.float-group:before,.float-group:after{content:" ";display:table}
 .clearfix:after,.float-group:after{clear:both}
-*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
 pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
 .keyseq{color:rgba(51,51,51,.8)}
-kbd{display:inline-block;color:rgba(0,0,0,.8);font-size:.75em;line-height:1.4;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:-.15em .15em 0 .15em;padding:.2em .6em .2em .5em;vertical-align:middle;white-space:nowrap}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
 .keyseq kbd:first-child{margin-left:0}
 .keyseq kbd:last-child{margin-right:0}
 .menuseq,.menu{color:rgba(0,0,0,.8)}
@@ -155,29 +159,33 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toc ul.sectlevel0>li>a{font-style:italic}
 #toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
 #toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
 #toc a{text-decoration:none}
 #toc a:active{text-decoration:underline}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media only screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
 #toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
-#toc.toc2 #toctitle{margin-top:0;font-size:1.2em}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
 #toc.toc2 ul ul{margin-left:0;padding-left:1em}
 #toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
 body.toc2.toc-right{padding-left:0;padding-right:15em}
-body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}@media only screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
+@media only screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
 #toc.toc2{width:20em}
 #toc.toc2 #toctitle{font-size:1.375em}
 #toc.toc2>ul{font-size:.95em}
 #toc.toc2 ul ul{padding-left:1.25em}
-body.toc2.toc-right{padding-left:0;padding-right:20em}}#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
 #content #toc>:first-child{margin-top:0}
 #content #toc>:last-child{margin-bottom:0}
 #footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
 #footer-text{color:rgba(255,255,255,.8);line-height:1.44}
 .sect1{padding-bottom:.625em}
-@media only screen and (min-width:768px){.sect1{padding-bottom:1.25em}}.sect1+.sect1{border-top:1px solid #efefed}
+@media only screen and (min-width:768px){.sect1{padding-bottom:1.25em}}
+.sect1+.sect1{border-top:1px solid #efefed}
 #content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
 #content h1>a.anchor:before,h2>a.anchor:before,h3>a.anchor:before,#toctitle>a.anchor:before,.sidebarblock>.content>.title>a.anchor:before,h4>a.anchor:before,h5>a.anchor:before,h6>a.anchor:before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
 #content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
@@ -206,7 +214,9 @@ table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inh
 .sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
 .literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
 .literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
-@media only screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}@media only screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+@media only screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media only screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
 .listingblock pre.highlightjs{padding:0}
 .listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
 .listingblock pre.prettyprint{border-width:0}
@@ -216,7 +226,7 @@ table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inh
 .listingblock.terminal pre .command:before{content:attr(data-prompt);padding-right:.5em;color:#999}
 .listingblock.terminal pre .command:not([data-prompt]):before{content:"$"}
 table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
-table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
 table.pyhltable td.code{padding-left:.75em;padding-right:0}
 pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
 pre.pygments .lineno{display:inline-block;margin-right:.25em}
@@ -237,13 +247,12 @@ table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 .verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
 .quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
 .quoteblock .attribution br,.verseblock .attribution br{display:none}
-.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.05em;color:rgba(0,0,0,.6)}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
 .quoteblock.abstract{margin:0 0 1.25em 0;display:block}
 .quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{text-align:left;word-spacing:0}
 .quoteblock.abstract blockquote:before,.quoteblock.abstract blockquote p:first-of-type:before{display:none}
 table.tableblock{max-width:100%;border-collapse:separate}
 table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
-table.spread{width:100%}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
 table.grid-all th.tableblock,table.grid-all td.tableblock{border-width:0 1px 1px 0}
 table.grid-all tfoot>tr>th.tableblock,table.grid-all tfoot>tr>td.tableblock{border-width:1px 1px 0 0}
@@ -289,8 +298,8 @@ ol.upperroman{list-style-type:upper-roman}
 ol.lowergreek{list-style-type:lower-greek}
 .hdlist>table,.colist>table{border:0;background:none}
 .hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
-td.hdlist1{padding-right:.75em;font-weight:bold}
-td.hdlist1,td.hdlist2{vertical-align:top}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
 .literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
 .colist>table tr>td:first-of-type{padding:0 .75em;line-height:1}
 .colist>table tr>td:last-of-type{padding:.25em 0}
@@ -303,13 +312,14 @@ td.hdlist1,td.hdlist2{vertical-align:top}
 .image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
 .image.left{margin-right:.625em}
 .image.right{margin-left:.625em}
-a.image{text-decoration:none}
-span.footnote,span.footnoteref{vertical-align:super;font-size:.875em}
-span.footnote a,span.footnoteref a{text-decoration:none}
-span.footnote a:active,span.footnoteref a:active{text-decoration:underline}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em 0;border-width:1px 0 0 0}
-#footnotes .footnote{padding:0 .375em;line-height:1.3;font-size:.875em;margin-left:1.2em;text-indent:-1.2em;margin-bottom:.2em}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;text-indent:-1.05em;margin-bottom:.2em}
 #footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none}
 #footnotes .footnote:last-of-type{margin-bottom:0}
 #content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
@@ -367,11 +377,10 @@ span.icon>.fa{cursor:default}
 pre .conum[data-value]{position:relative;top:-.125em}
 b.conum *{color:inherit!important}
 .conum:not([data-value]):empty{display:none}
-h1,h2{letter-spacing:-.01em}
-dt,th.tableblock,td.content{text-rendering:optimizeLegibility}
-p,td.content{letter-spacing:-.01em}
-p strong,td.content strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content{font-size:1.0625rem}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -382,9 +391,9 @@ a{color:inherit!important;text-decoration:underline!important}
 a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
 a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
 abbr[title]:after{content:" (" attr(title) ")"}
-pre,blockquote,tr,img{page-break-inside:avoid}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
 thead{display:table-header-group}
-img{max-width:100%!important}
+svg{max-width:100%}
 p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
 h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
 #toc,.sidebarblock,.exampleblock>.content{background:none!important}
@@ -413,9 +422,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 /*pre.CodeRay {background-color:#f7f7f8;}*/
 .CodeRay .line-numbers{border-right:1px solid #d8d8d8;padding:0 0.5em 0 .25em}
 .CodeRay span.line-numbers{display:inline-block;margin-right:.5em;color:rgba(0,0,0,.3)}
-.CodeRay .line-numbers strong{font-weight: normal}
+.CodeRay .line-numbers strong{color:rgba(0,0,0,.4)}
 table.CodeRay{border-collapse:separate;border-spacing:0;margin-bottom:0;border:0;background:none}
-table.CodeRay td{vertical-align: top}
+table.CodeRay td{vertical-align: top;line-height:1.45}
 table.CodeRay td.line-numbers{text-align:right}
 table.CodeRay td.line-numbers>pre{padding:0;color:rgba(0,0,0,.3)}
 table.CodeRay td.code{padding:0 0 0 .5em}
@@ -450,7 +459,7 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .hex{color:#058}
 .CodeRay .integer,.CodeRay .float{color:#099}
 .CodeRay .include{color:#555}
-.CodeRay .inline{color:#00}
+.CodeRay .inline{color:#000}
 .CodeRay .inline .inline{background:#ccc}
 .CodeRay .inline .inline .inline{background:#bbb}
 .CodeRay .inline .inline-delimiter{color:#d14}
@@ -526,7 +535,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_02_working_with_users">02 Working With Users</a>
 <ul class="sectlevel2">
 <li><a href="#_listing_project_s_users">Listing Project&#8217;s Users</a></li>
-<li><a href="#_checking_user_memberhip_in_project">Checking User Memberhip in Project</a></li>
+<li><a href="#_checking_user_membership_in_project">Checking User Membership in Project</a></li>
 <li><a href="#_enabling_and_disabling_users">Enabling and Disabling Users</a></li>
 <li><a href="#_creating_multiple_users_from_csv">Creating Multiple Users from CSV</a></li>
 <li><a href="#_inviting_users_to_project">Inviting Users to Project</a></li>
@@ -567,13 +576,16 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_creating_empty_project">Creating Empty Project</a></li>
 <li><a href="#_renaming_project">Renaming Project</a></li>
 <li><a href="#_cloning_project">Cloning Project</a></li>
-<li><a href="#_cloning_project_accross_organizations">Cloning Project accross Organizations</a></li>
+<li><a href="#_cloning_project_across_organizations">Cloning Project across Organizations</a></li>
 <li><a href="#_creating_empty_project_using_specific_environment">Creating Empty Project using specific environment.</a></li>
 <li><a href="#_creating_project_from_template">Creating Project from Template</a></li>
 <li><a href="#_migrating_objects_between_projects">Migrating objects between projects</a></li>
 <li><a href="#_delete_data_in_project">Delete data in project</a></li>
 <li><a href="#_delete_a_project">Delete a project</a></li>
-<li><a href="#_delete_a_project_2">Delete a project</a></li>
+<li><a href="#_listing_roles">Listing Roles</a></li>
+<li><a href="#_setting_and_updating_project_metadata_storage">Setting and updating project metadata storage</a></li>
+<li><a href="#_create_custom_color_palette">Create custom color palette</a></li>
+<li><a href="#_looking_up_metadata_objects">Looking up metadata objects</a></li>
 </ul>
 </li>
 <li><a href="#_07_deployment_recipes">07 Deployment Recipes</a>
@@ -588,6 +600,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_changing_an_existing_schedule">Changing an existing schedule</a></li>
 <li><a href="#_investigating_executions">Investigating Executions</a></li>
 <li><a href="#_visualizing_executions">Visualizing executions</a></li>
+<li><a href="#_registering_a_notification_email">Registering a notification email</a></li>
+<li><a href="#_automated_data_distribution_add">Automated Data Distribution (ADD)</a></li>
 </ul>
 </li>
 <li><a href="#_08_working_with_reports">08 Working With Reports</a>
@@ -596,7 +610,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_comparing_reports_across_projects">Comparing Reports across Projects</a></li>
 <li><a href="#_updating_report_definition">Updating report definition</a></li>
 <li><a href="#_creating_report_that_counts_records_in_all_datasets">Creating Report that Counts Records in All Datasets</a></li>
-<li><a href="#_reseting_report_color_map">Reseting Report Color Map</a></li>
+<li><a href="#_resetting_report_color_map">Resetting Report Color Map</a></li>
 <li><a href="#_computing_ad_hoc_report">Computing Ad Hoc Report</a></li>
 <li><a href="#_working_with_report_results">Working with report results</a></li>
 <li><a href="#_exporting_report_results">Exporting report results</a></li>
@@ -611,6 +625,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_write_information_about_project_s_metrics_and_attributes_to_csv">Write Information about project&#8217;s metrics and attributes to CSV</a></li>
 <li><a href="#_changing_metric_s_number_formatting">Changing Metric&#8217;s Number Formatting</a></li>
 <li><a href="#_creating_metrics">Creating Metrics</a></li>
+<li><a href="#_creating_metric_with_filter">Creating Metric with filter</a></li>
 </ul>
 </li>
 <li><a href="#_10_working_with_dashboards">10 Working With Dashboards</a>
@@ -627,6 +642,15 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_setting_data_permissions_from_csv_column_format">Setting Data Permissions from CSV (column format)</a></li>
 <li><a href="#_setting_data_permissions_from_csv_row_format">Setting Data Permissions from CSV (row format)</a></li>
 <li><a href="#_list_variable_values">List Variable Values</a></li>
+</ul>
+</li>
+<li><a href="#_12_working_with_ads">12 Working With Ads</a>
+<ul class="sectlevel2">
+<li><a href="#_executing_sql_queries_on_ads">Executing SQL Queries on ADS</a></li>
+<li><a href="#_importing_csv_files_to_ads">Importing CSV files to ADS</a></li>
+<li><a href="#_editing_tables_in_ads">Editing Tables In ADS</a></li>
+<li><a href="#_create_table_in_ads">Create Table In ADS</a></li>
+<li><a href="#_get_columns_ads_table">Get Columns ADS Table</a></li>
 </ul>
 </li>
 <li><a href="#_12_working_with_blueprints">12 Working With Blueprints</a>
@@ -646,6 +670,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_working_with_hr_demo_project">Working with HR Demo project</a></li>
 <li><a href="#_refactoring_datasets">Refactoring datasets</a></li>
 <li><a href="#_reconnect_date_dimension">Reconnect date dimension</a></li>
+<li><a href="#_taking_portion_of_a_project_model">Taking portion of a project model</a></li>
 </ul>
 </li>
 <li><a href="#_13_working_with_lifecycle">13 Working With Lifecycle</a>
@@ -653,6 +678,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_working_with_segments">Working with segments</a></li>
 </ul>
 </li>
+<li><a href="#_bin">Bin</a></li>
 </ul>
 </div>
 </div>
@@ -730,10 +756,10 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect4">
 <h5 id="_irb">IRB</h5>
 <div class="paragraph">
-<p>irb is an interactive console that is provided with your Ruby installation. You may use gooddata sdk inside your irb. Below are some of the basic steps.</p>
+<p>IRB is an interactive console that is provided with your Ruby installation. You may use gooddata SDK inside your IRB. Below are some of the basic steps.</p>
 </div>
 <div class="paragraph">
-<p>First, launch irb. In your terminal, execute the following:</p>
+<p>First, launch IRB. In your terminal, execute the following:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -774,7 +800,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="paragraph">
-<p>Ok. Now, repeat the previous command:</p>
+<p>OK. Now, repeat the previous command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -815,7 +841,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="paragraph">
-<p>Ok. To exit irb, enter:</p>
+<p>OK. To exit irb, enter:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1034,7 +1060,7 @@ pp client.user.json</code></pre>
 <div class="sect3">
 <h4 id="_solution_6">Solution</h4>
 <div class="paragraph">
-<p>Solution to both is passing the server name as a pareameter to connect or with_connection functions.</p>
+<p>You can either pass the server name as a parameter to connect or alternatively with the with_connection functions.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1071,7 +1097,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="sect3">
 <h4 id="_solution_7">Solution</h4>
 <div class="paragraph">
-<p>Super Secure Token is a token that allows to access you our APIs in a nonrestricted matter without necessarily knowing username and password. Take note that currently you do not have access to whole API. Things like interacting with DSS and Staging Storage still need username and pass. We are trying t resolve the issue.
+<p>A Super Secure Token is a token that allows to access you our APIs in a unrestricted manner without necessarily knowing the username and password. Take note that currently you do not have access to the whole API. Things like interacting with DSS and Staging Storage still need a username and password. This issue is currently being resolved.
 First you need to have SST token. There are several ways how to obtain it. Here is one using SDK</p>
 </div>
 <div class="listingblock">
@@ -1108,7 +1134,7 @@ client.connection.sst_token
 <div class="sect3">
 <h4 id="_problem_8">Problem</h4>
 <div class="paragraph">
-<p>You would like to write scripts that are sharable. Currently you either have to rely on ~/.gooddata file or put there the credentials by hand. This is error prone and you have to be careful so you do not share your passwords.</p>
+<p>You would like to write scripts that are shareable. Currently you must either rely on the ~/.gooddata file or enter the credentials by hand. This is error prone and you must be careful that you do not share your passwords.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1170,7 +1196,7 @@ puts client.projects.count</code></pre>
 <div class="sect3">
 <h4 id="_discussion_5">Discussion</h4>
 <div class="paragraph">
-<p>You see that you can easily share these scripts with other people since you have externalized all sensitive information. If the user will put the config file on a expected place everything will just work. There are other formats and ways you can leverage but the idea is always the same.</p>
+<p>You see that you can easily share these scripts with other people since you have externalized all sensitive information. If the user puts the configuration file in an expected place everything will work. There are other formats and ways you can leverage this but the idea is always the same.</p>
 </div>
 <div class="paragraph">
 <p>This is actually something we do behind the scenes if you do not specify any params into connect or with_connection. We look at ~/.gooddata for a JSON file and use what we find there. This is extremely useful when you are showing things interactively so you do not have to disclose your credentials. You can either go and create the file by hand or you can use a convenience method we have created for you. Just call gooddata auth store and you will be asked couple of questions and the file will be created for you.</p>
@@ -1298,7 +1324,7 @@ client = <span class="constant">GoodData</span>.connect(<span class="key">sst_to
 <div class="sect3">
 <h4 id="_problem_12">Problem</h4>
 <div class="paragraph">
-<p>You would like to build on top of SDK but you would like to have more controll over asynchronous tasks</p>
+<p>You would like to build on top of the SDK but you would like to have more control over asynchronous tasks.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1310,7 +1336,7 @@ client = <span class="constant">GoodData</span>.connect(<span class="key">sst_to
 <p>The way these tasks are implemented in SDK that they block. The execution continues only when the task finishes (either success or error) or the server time limit is reached and the task is killed.</p>
 </div>
 <div class="paragraph">
-<p>Sometimes it is useful to be able to specify the time limit on the client side. This might be useful for cases where you need to make sure that something is either finished under a certain tim threshold or you have to make some other action (notifying a customer). The limit you would like to use is different then the server side limit of GoodData APIs.</p>
+<p>Sometimes it is useful to be able to specify the time limit on the client side. This might be useful for cases where you need to make sure that something is either finished under a certain time threshold or you have to make some other action (notifying a customer). The limit you would like to use is different then the server side limit of GoodData APIs.</p>
 </div>
 <div class="paragraph">
 <p>You can implement it like this</p>
@@ -1444,7 +1470,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect2">
-<h3 id="_checking_user_memberhip_in_project">Checking User Memberhip in Project</h3>
+<h3 id="_checking_user_membership_in_project">Checking User Membership in Project</h3>
 <div class="paragraph">
 <p>by Tomas Svarovsky</p>
 </div>
@@ -1942,7 +1968,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="paragraph">
-<p>What this does is to reads the users groups them according to a project and then adds them to the project. It reads all the users into memory but this should be ok for typical situations of thousands users. Note that we are not getting a project dynamically for each group of users. All the notes for whitelist apply as well.</p>
+<p>This reads the users, groups them according to a project and then adds them to the project. It reads all the users into memory. This should be OK for typical situations of thousands users. Note that we are not getting a project dynamically for each group of users. All the notes for whitelist apply as well.</p>
 </div>
 </div>
 </div>
@@ -1992,7 +2018,7 @@ john.doe@example.com,John,Doe,87616393,admin</pre>
 <p>Connected to previous point sometimes you have users that you do not want to be touched by this process. ETL developers, admins etc that usually do not come from data. You can provide list of whitelist expressions as either string or regular expressions. What this means is the user that would be added or removed based on the data will be ignored by the process. In our example we want to omit user under which you are logged in.</p>
 </li>
 <li>
-<p>Be careful so you do not lock yourself (etl administrator) out of the project. Be sure to add him/her to whitelist if he is not intrinsically in the data.</p>
+<p>Be careful that you do not lock yourself (ETL administrator) out of the project. Be sure to add the user to the whitelist if they are not intrinsically in the data.</p>
 </li>
 <li>
 <p>Note that above data will not work. Currently there is a constraint that each user has to have unique login across all users in GoodData. It is likely that there already is a <code>john@example.com</code> somewhere so change the test data accordingly.</p>
@@ -2286,7 +2312,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="sect3">
 <h4 id="_solution_29">Solution</h4>
 <div class="paragraph">
-<p>Often if you look at the API the structure is orthogonal to your usecase. For example you might need to invite user to many projects but the API has only an endpoint to invite a user to single project. If you do something like.</p>
+<p>Often if you look at the API the structure is orthogonal to your use case. For example you might need to invite user to many projects but the API has only an endpoint to invite a user to a single project. If you do something like</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2296,7 +2322,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="paragraph">
-<p>it will work but it will create as many requests as there are projects. The requests will be processed sequentially and this takes time. Just by some back of the napkin computation you can estimate. Let&#8217;s say we have 1000 projects and invitation request takes 500ms (half a second). This means it will take 500 seconds that is almost 10 mins.</p>
+<p>it will work but it will create as many requests as there are projects. The requests will be processed sequentially and this takes time. You can estimate this easily. Let&#8217;s say we have 1000 projects and invitation request takes 500ms (half a second). This means it will take 500 seconds therefore almost 10 minutes.</p>
 </div>
 <div class="paragraph">
 <p>The nice thing is that the requests for inviting user to each project are totally independent. You don&#8217;t need a project invitation to finish before you invite the user to another project. So you can invoke multiple invitations at the same time. The following code invokes multiple invitations in parallel</p>
@@ -2309,7 +2335,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="paragraph">
-<p>We&#8217;ve just changed single letter. We are using pmap which stands for parallel map. It behaves exactly the same as map with one difference. Block for each item of the array runs in a separate thread. You do not need to think about it it just happens faster. We have currently 20 thread reserved so it will run 20 times faster. that is under 0.5 mins.</p>
+<p>We&#8217;ve just changed single letter. We are using pmap which stands for parallel map. It behaves exactly the same as map with one difference. The block for each item of the array runs in a separate thread. You do not need to think about it, it just happens faster. We have currently 20 threads reserved so it will run 20 times faster. In this case under 0.5 minutes.</p>
 </div>
 </div>
 </div>
@@ -2332,7 +2358,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="sect3">
 <h4 id="_solution_30">Solution</h4>
 <div class="paragraph">
-<p>You can change identifier on any object (e.g. dashboards, reports, metrics, attributes, facts etc.). Many tools rely on specific LDM object identifier&#8217;s naming convention. So changing the identifier may be very handy for for enforcing the naming convention. For example lwhen you move an attribute from one dataset to another, you may want to change it&#8217;s identifier.</p>
+<p>You can change the identifier on any object (e.g. dashboards, reports, metrics, attributes, facts etc.). Many tools rely on specific LDM object identifier&#8217;s naming convention. So changing the identifier may be very handy for for enforcing the naming convention. For example when you move an attribute from one dataset to another, you may want to change its identifier.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2452,7 +2478,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="sect3">
 <h4 id="_solution_33">Solution</h4>
 <div class="paragraph">
-<p>SDK calls the MAQL SYNCHRONUIZE command on the dataset</p>
+<p>SDK calls the MAQL SYNCHRONIZE command on the dataset</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -2606,7 +2632,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
       <span class="comment"># Or explicitly specify mapping using identifiers...</span>
       <span class="symbol">:mapping</span> =&gt; {
         <span class="string"><span class="delimiter">'</span><span class="content">closedate.date</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">abortdate.date</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">closedate.day.in.euweek</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">abortdate.day.in.euweek</span><span class="delimiter">'</span></span>,
+        <span class="string"><span class="delimiter">'</span><span class="content">closedate.day.in.euweek</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">abortdate.day.in.week</span><span class="delimiter">'</span></span>,
         <span class="string"><span class="delimiter">'</span><span class="content">closedate.month</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">abortdate.month</span><span class="delimiter">'</span></span>,
         <span class="string"><span class="delimiter">'</span><span class="content">closedate.month.in.year</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">abortdate.month.in.year</span><span class="delimiter">'</span></span>,
         <span class="string"><span class="delimiter">'</span><span class="content">closedate.euweek.in.year</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">abortdate.week.in.year</span><span class="delimiter">'</span></span>,
@@ -2762,19 +2788,21 @@ project = client.projects(<span class="string"><span class="delimiter">'</span><
 cloned_project = project.clone(<span class="key">title</span>: <span class="string"><span class="delimiter">'</span><span class="content">New title</span><span class="delimiter">'</span></span>,
                                <span class="key">auth_token</span>: <span class="string"><span class="delimiter">'</span><span class="content">token</span><span class="delimiter">'</span></span>,
                                <span class="key">users</span>: <span class="predefined-constant">false</span>,
-                               <span class="key">data</span>: <span class="predefined-constant">true</span>)</code></pre>
+                               <span class="key">data</span>: <span class="predefined-constant">true</span>,
+                               <span class="key">exclude_schedules</span>: <span class="predefined-constant">true</span>,
+                               <span class="key">cross_data_center_export</span>: <span class="predefined-constant">true</span>)</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_discussion_12">Discussion</h4>
 <div class="paragraph">
-<p>There are two options that you can specify. You can pick if you want to clone just metadata (e.g. attributes, facts, metrics reports, dashboards etc.) or also data (this is default). Also you can choose if you want to transfer all old project&#8217;s users to the new project. No users are transferred by default. In the example above we explicitly specified the <em>users</em> and <em>data</em> optional parameters so you can see how it works.</p>
+<p>There are four options that you can specify. You can pick if you want to clone just metadata (e.g. attributes, facts, metrics reports, dashboards etc.) or also data (this is default). Also you can choose if you want to transfer all old project&#8217;s users to the new project. No users are transferred by default. In the example above we explicitly specified the <em>users</em> and <em>data</em> optional parameters so you can see how it works. Setting the exclude_schedules to true causes scheduled emails to be omitted from the transfer. The cross_data_center_export specifies whether the export can be used in any data center.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cloning_project_accross_organizations">Cloning Project accross Organizations</h3>
+<h3 id="_cloning_project_across_organizations">Cloning Project across Organizations</h3>
 <div class="paragraph">
 <p>by Tomas Svarovsky</p>
 </div>
@@ -2826,13 +2854,19 @@ client_to = <span class="constant">GoodData</span>.connect(user_to_login, <span 
 from_project = client_from.projects(<span class="string"><span class="delimiter">'</span><span class="content">project_pid_1</span><span class="delimiter">'</span></span>)
 to_project = client_to.create_project(<span class="symbol">:title</span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">project_title</span><span class="delimiter">&quot;</span></span>, <span class="symbol">:auth_token</span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">TOKEN</span><span class="delimiter">&quot;</span></span>)
 
-export_token = from_project.export_clone(<span class="key">authorized_users</span>: [user_to_login], <span class="key">data</span>: <span class="predefined-constant">true</span>, <span class="key">users</span>: <span class="predefined-constant">false</span>)
+export_token = from_project.export_clone(<span class="key">authorized_users</span>: [user_to_login],
+                                         <span class="key">data</span>: <span class="predefined-constant">true</span>,
+                                         <span class="key">exclude_schedules</span>: <span class="predefined-constant">true</span>,
+                                         <span class="key">cross_data_center_export</span>: <span class="predefined-constant">true</span>)
 to_project.import_clone(export_token)</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_discussion_13">Discussion</h4>
+<div class="paragraph">
+<p>The options for <code>Project#export_clone</code> are the same as for <code>Project#clone</code> with a couple additions. You can specify which users will be able to import the package using the <code>authorized_users</code> option. If you want to use the export in another data-center, set <code>cross_data_center_export</code> to true.</p>
+</div>
 <div class="paragraph">
 <p>You can also leverage this more granular interface when you need to clone one project to multiple target projects.</p>
 </div>
@@ -2943,7 +2977,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
   <span class="constant">GoodData</span>.with_project(<span class="string"><span class="delimiter">'</span><span class="content">master_project_id</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |master_project|
     <span class="comment"># find objects you would like to transfer</span>
     <span class="comment"># here we transfer all reports containing word &quot;sales&quot; in the title</span>
-    reports = master_project.reports.select { |r| r.title =~ <span class="regexp"><span class="delimiter">/</span><span class="content">title</span><span class="delimiter">/</span></span> }
+    reports = master_project.reports.select { |r| r.title =~ <span class="regexp"><span class="delimiter">/</span><span class="content">sales</span><span class="delimiter">/</span></span> }
     <span class="keyword">begin</span>
       master_project.transfer_objects(reports, <span class="key">project</span>: target_project)
     <span class="keyword">rescue</span> <span class="constant">ObjectsMigrationError</span>
@@ -2957,7 +2991,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="sect3">
 <h4 id="_discussion_15">Discussion</h4>
 <div class="paragraph">
-<p>Occassionally you need to transfer objects to multiple projects. To make it easier SDK provides a convenience method for this.</p>
+<p>Occasionally you need to transfer objects to multiple projects. To make it easier SDK provides a convenient method for this.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2973,7 +3007,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
   <span class="constant">GoodData</span>.with_project(<span class="string"><span class="delimiter">'</span><span class="content">master_project_id</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |master_project|
     <span class="comment"># find objects you would like to transfer</span>
     <span class="comment"># here we transfer all reports containing word &quot;sales&quot; in the title</span>
-    reports = master_project.reports.select { |r| r.title =~ <span class="regexp"><span class="delimiter">/</span><span class="content">title</span><span class="delimiter">/</span></span> }
+    reports = master_project.reports.select { |r| r.title =~ <span class="regexp"><span class="delimiter">/</span><span class="content">sales</span><span class="delimiter">/</span></span> }
     result = master_project.transfer_objects(reports, <span class="key">project</span>: [target_project_1, target_project_2])
 
     <span class="comment"># If you provided an array of projects the method will not throw an exception on failed</span>
@@ -3005,7 +3039,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
   <span class="constant">GoodData</span>.with_project(<span class="string"><span class="delimiter">'</span><span class="content">master_project_id</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |master_project|
     <span class="comment"># find objects you would like to transfer</span>
     <span class="comment"># here we transfer all reports containing word &quot;sales&quot; in the title</span>
-    reports = master_project.reports.select { |r| r.title =~ <span class="regexp"><span class="delimiter">/</span><span class="content">title</span><span class="delimiter">/</span></span> }
+    reports = master_project.reports.select { |r| r.title =~ <span class="regexp"><span class="delimiter">/</span><span class="content">sales</span><span class="delimiter">/</span></span> }
     <span class="keyword">begin</span>
       token = master_project.objects_export(reports)
     <span class="keyword">rescue</span> <span class="constant">ObjectsExportError</span>
@@ -3058,7 +3092,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="sect3">
 <h4 id="_problem_45">Problem</h4>
 <div class="paragraph">
-<p>You need to delete a project programatically.</p>
+<p>You must delete a project programmatically.</p>
 </div>
 </div>
 <div class="sect3">
@@ -3079,7 +3113,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect2">
-<h3 id="_delete_a_project_2">Delete a project</h3>
+<h3 id="_listing_roles">Listing Roles</h3>
 <div class="paragraph">
 <p>by Tomas Svarovsky</p>
 </div>
@@ -3110,6 +3144,127 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_setting_and_updating_project_metadata_storage">Setting and updating project metadata storage</h3>
+<div class="paragraph">
+<p>by Tomas Svarovsky</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_47">Problem</h4>
+<div class="paragraph">
+<p>You would like to use project metadata storage to store some additional information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_47">Solution</h4>
+<div class="paragraph">
+<p>Each project has a small API that allows to set some values in a simple key value manner. This is usually used for storing some information that do not fit into the data.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">gooddata</span><span class="delimiter">'</span></span>
+
+client = <span class="constant">GoodData</span>.connect
+project = client.projects(<span class="string"><span class="delimiter">'</span><span class="content">project_id</span><span class="delimiter">'</span></span>)
+
+<span class="comment"># You can set some metadata</span>
+p.set_metadata(<span class="string"><span class="delimiter">'</span><span class="content">key</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span>)
+
+<span class="comment"># You can access the project metadata in two ways</span>
+<span class="comment">#</span>
+<span class="comment"># First is to get specific key directly</span>
+p.metadata(<span class="string"><span class="delimiter">'</span><span class="content">key</span><span class="delimiter">'</span></span>)
+<span class="comment"># =&gt; 'value</span>
+<span class="comment"># In case you try to access a nonexisting key you will get 404</span>
+
+<span class="comment"># Second is to access all metadata. This will return them as a Hash which you can access as usual</span>
+m = p.metadata
+<span class="comment"># =&gt; {&quot;key&quot;=&gt;&quot;value&quot;}</span>
+m[<span class="string"><span class="delimiter">'</span><span class="content">key</span><span class="delimiter">'</span></span>]
+<span class="comment"># =&gt; &quot;value&quot;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_custom_color_palette">Create custom color palette</h3>
+<div class="paragraph">
+<p>by Vo Ha Tien</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_48">Problem</h4>
+<div class="paragraph">
+<p>You would like to create a set of color palette to decorate your reports.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_48">Solution</h4>
+<div class="paragraph">
+<p>Create custom color palette with your color definitions. You can reset your project to use the default color palette if needed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata</span><span class="delimiter">'</span></span>
+
+<span class="constant">GoodData</span>.with_connection <span class="keyword">do</span> |client|
+  <span class="constant">GoodData</span>.with_project(<span class="string"><span class="delimiter">'</span><span class="content">project_id</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |project|
+    colors = [
+      { <span class="key">r</span>: <span class="integer">25</span>, <span class="key">g</span>: <span class="integer">36</span>, <span class="key">b</span>: <span class="integer">48</span> },
+      { <span class="key">r</span>: <span class="integer">33</span>, <span class="key">g</span>: <span class="integer">36</span>, <span class="key">b</span>: <span class="integer">64</span> },
+      { <span class="key">r</span>: <span class="integer">42</span>, <span class="key">g</span>: <span class="integer">61</span>, <span class="key">b</span>: <span class="integer">81</span> }
+    ]
+
+    project.create_custom_color_palette(colors)
+
+    <span class="comment"># get the current color palette</span>
+    current_color_palette = project.current_color_palette.colors
+
+    project.reset_color_palette
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_looking_up_metadata_objects">Looking up metadata objects</h3>
+<div class="paragraph">
+<p>by Jan Zdrahal</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_49">Problem</h4>
+<div class="paragraph">
+<p>You would like to retrieve metadata objects (e.g. metrics, facts, labels) by numeric ID, string identifier or URI.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_49">Solution</h4>
+<div class="paragraph">
+<p>Use <code>GoodData::MdObject#[]</code> to look up your metadata objects. This method is aliased <code>#get_by_id</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = { <span class="key">project</span>: project, <span class="key">client</span>: client }
+id = metric.obj_id
+<span class="comment"># =&gt; &quot;2258&quot;</span>
+<span class="constant">GoodData</span>::<span class="constant">MdObject</span>[id, options].class
+<span class="comment"># =&gt; GoodData::Metric</span>
+
+identifier = metric.identifier
+<span class="comment"># =&gt; &quot;metric.total.claim.amount&quot;</span>
+<span class="constant">GoodData</span>::<span class="constant">MdObject</span>[identifier, options].class
+<span class="comment"># =&gt; GoodData::Metric</span>
+
+uri = metric.uri
+<span class="comment"># =&gt; &quot;/gdc/md/zlf5mgyd1txaztohukv8xwv1jjm28zvg/obj/2258&quot;</span>
+<span class="constant">GoodData</span>::<span class="constant">MdObject</span>[uri, options].class
+<span class="comment"># =&gt; GoodData::Metric</span></code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3121,13 +3276,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_47">Problem</h4>
+<h4 id="_problem_50">Problem</h4>
 <div class="paragraph">
 <p>You would like to deploy a CloudConnect or Ruby SDK process to GoodData platform.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_47">Solution</h4>
+<h4 id="_solution_50">Solution</h4>
 <div class="paragraph">
 <p>SDK allows you to deploy a process. Just point it to a directory or a zipped archive that you want to deploy. Below is an example of CloudConnect process deployment. When deploying CloudConnect processes you typically want to take the whole folder structure of a CloudConnect project and deploy it. So you will want to pass either path to the root folder of the structure or you can zip it first and pass just a path to the zip archive. The below example points to the root folder of a CloudConnect project.</p>
 </div>
@@ -3153,13 +3308,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_48">Problem</h4>
+<h4 id="_problem_51">Problem</h4>
 <div class="paragraph">
 <p>You would like to redeploy a CloudConnect or Ruby process to GoodData platform.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_48">Solution</h4>
+<h4 id="_solution_51">Solution</h4>
 <div class="paragraph">
 <p>SDK provides means for redeploying a process (with a new updated content). All you have to do is to get a handle on the process. Here we are using a process id to identify the process that we want to redeploy. You can use any other way to identify the process to redeploy. Take note that the same deployment rules as in <code>project.deploy_process</code> apply.</p>
 </div>
@@ -3185,13 +3340,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_49">Problem</h4>
+<h4 id="_problem_52">Problem</h4>
 <div class="paragraph">
 <p>You have a process deployed and you would like to add a schedule to it so the process is executed regularly</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_49">Solution</h4>
+<h4 id="_solution_52">Solution</h4>
 <div class="paragraph">
 <p>You can easily add a time based schedule to any process. Scheduled process execution has couple advantages over the ad-hoc process executions. Scheduled executions are logged and logs are kept around for some time (~10 days). Also schedule keeps list of parameters so you create it once and you do not need to care about them anymore.</p>
 </div>
@@ -3204,10 +3359,62 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <span class="constant">GoodData</span>.with_connection <span class="keyword">do</span> |client|
   <span class="constant">GoodData</span>.with_project(<span class="string"><span class="delimiter">'</span><span class="content">project_id</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |project|
     process = project.deploy_process(<span class="string"><span class="delimiter">'</span><span class="content">./path/to_cloud_connect_directory</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Test ETL Process</span><span class="delimiter">'</span></span>)
-    process.create_schedule(<span class="string"><span class="delimiter">'</span><span class="content">0 15 * * *</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">graph/my_graph.grf</span><span class="delimiter">'</span></span>, <span class="key">params</span>: { <span class="key">param1</span>: <span class="string"><span class="delimiter">'</span><span class="content">a</span><span class="delimiter">'</span></span>, <span class="key">param2</span>: <span class="string"><span class="delimiter">'</span><span class="content">b</span><span class="delimiter">'</span></span> })
+    process.create_schedule(<span class="string"><span class="delimiter">'</span><span class="content">0 15 * * *</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">graph/my_graph.grf</span><span class="delimiter">'</span></span>,
+      <span class="key">params</span>: {
+        <span class="key">param_1</span>: <span class="string"><span class="delimiter">'</span><span class="content">a</span><span class="delimiter">'</span></span>,
+        <span class="key">param_2</span>: <span class="string"><span class="delimiter">'</span><span class="content">b</span><span class="delimiter">'</span></span>
+      },
+      <span class="key">hidden_params</span>: {
+        <span class="key">hidden_param_1</span>: <span class="string"><span class="delimiter">'</span><span class="content">a</span><span class="delimiter">'</span></span>,
+        <span class="key">hidden_param_2</span>: <span class="string"><span class="delimiter">'</span><span class="content">b</span><span class="delimiter">'</span></span>
+      }
+    )
   <span class="keyword">end</span>
 <span class="keyword">end</span></code></pre>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_working_with_json">Working with JSON</h4>
+<div class="paragraph">
+<p>In many examples in the Appstore, the parameters are specified in JSON. JSON is language agnostic that is very similar to Ruby format of representing data but it is not exactly the same. Since here we are working in Ruby we present a short example how to convert JSON to Ruby automatically.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s assume we have some JSON parameters that look like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+  "param_1" : {
+    "deeper_key" : "value_1"
+  },
+  "param_2" : "value_2"
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We first need to store this in a string and then use one of the ruby libraries to convert this to the equivalent on Ruby language. Typically there are problems with the quotes since in many language a string literal is defined with " and thus the JSON need to be escaped. Another problem might be caused with the fact that JSON is typically on multiple lines (as in our example). We use one of the lesser known features of ruby called HEREDOC to help us. It is basically a way to define a string that is potentially on multiple lines without worrying about escaping.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">data = <span class="string"><span class="delimiter">&lt;&lt;JSON_DATA</span></span><span class="string"><span class="content">
+{
+  &quot;param_1&quot; : {
+    &quot;deeper_key&quot; : &quot;value_1&quot;
+  },
+  &quot;param_2&quot; : &quot;value_2&quot;
+}</span><span class="delimiter">
+JSON_DATA</span></span>
+
+
+<span class="comment"># Note that &lt;&lt;JSON_DATA and JSON_DATA marks the beginning and the end of the string. Once we have the JSON string defined we can use JSON libraries to convert it. Here we are using MultiJson which is part fo the Ruby SDK.</span>
+
+params = <span class="constant">MultiJson</span>.load(data)
+=&gt; {<span class="string"><span class="delimiter">&quot;</span><span class="content">param_1</span><span class="delimiter">&quot;</span></span>=&gt;{<span class="string"><span class="delimiter">&quot;</span><span class="content">deeper_key</span><span class="delimiter">&quot;</span></span>=&gt;<span class="string"><span class="delimiter">&quot;</span><span class="content">value_1</span><span class="delimiter">&quot;</span></span>}, <span class="string"><span class="delimiter">&quot;</span><span class="content">param_2</span><span class="delimiter">&quot;</span></span>=&gt;<span class="string"><span class="delimiter">&quot;</span><span class="content">value_2</span><span class="delimiter">&quot;</span></span>}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then we can use it as in the example above</p>
 </div>
 </div>
 </div>
@@ -3217,13 +3424,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_50">Problem</h4>
+<h4 id="_problem_53">Problem</h4>
 <div class="paragraph">
 <p>You would like to disable all schedules on all processes on all the projects you have access to and have sufficient privileges to do so.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_50">Solution</h4>
+<h4 id="_solution_53">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
@@ -3248,13 +3455,13 @@ client = <span class="constant">GoodData</span>.connect
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_51">Problem</h4>
+<h4 id="_problem_54">Problem</h4>
 <div class="paragraph">
 <p>You have a process with a schedule. You would like to execute it out of schedule.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_51">Solution</h4>
+<h4 id="_solution_54">Solution</h4>
 <div class="paragraph">
 <p>Since schedule already have information about executable and parameters stored it is very easy. You just need to find the schedule and execute it.</p>
 </div>
@@ -3278,13 +3485,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_52">Problem</h4>
+<h4 id="_problem_55">Problem</h4>
 <div class="paragraph">
 <p>You would like to execute a process without a schedule.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_52">Solution</h4>
+<h4 id="_solution_55">Solution</h4>
 <div class="paragraph">
 <p>SDK allows you to execute a process. This is not something that you should do regularly since you have to specify the parameters during execution and logs are not kept for individual executions but it might be occasionally useful.</p>
 </div>
@@ -3351,13 +3558,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Zdenek Svoboda</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_53">Problem</h4>
+<h4 id="_problem_56">Problem</h4>
 <div class="paragraph">
 <p>You want to schedule a process to run upon successful completion of another process (schedule). This is also known as run-after triggered schedule.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_53">Solution</h4>
+<h4 id="_solution_56">Solution</h4>
 <div class="paragraph">
 <p>If you use an existing schedule object instead of a cron expression in the create_schedule method, the scheduled process will be scheduled to execute upon successful completion of the passed schedule.</p>
 </div>
@@ -3387,13 +3594,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_54">Problem</h4>
+<h4 id="_problem_57">Problem</h4>
 <div class="paragraph">
 <p>You have a schedule but would like to change it</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_54">Solution</h4>
+<h4 id="_solution_57">Solution</h4>
 <div class="paragraph">
 <p>You can retrieve a schedule in the same way as any other object, use it&#8217;s methods to change it and save it.</p>
 </div>
@@ -3475,15 +3682,15 @@ schedule_id = <span class="string"><span class="delimiter">'</span><span class="
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_55">Problem</h4>
+<h4 id="_problem_58">Problem</h4>
 <div class="paragraph">
-<p>You have large amount of projects and would like to investigate their execution. The administration UI is not necessarilly helpful since its overview UI can hide some failures, there is too much too go through by hand etc.</p>
+<p>You have large amount of projects and would like to investigate their execution. The administration UI is not necessarily helpful as its overview UI can hide some failures, there is too much too go through by hand etc.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_55">Solution</h4>
+<h4 id="_solution_58">Solution</h4>
 <div class="paragraph">
-<p>Let&#8217;s have a look at couple of scenarios. First let&#8217;s investigate executions inside one project regardless of which schedule it was triggered by. Let&#8217;s assume first that we are just looking for any executions that failed for that particular project. We will print the date when it happend sorted in a ascending fashion.</p>
+<p>Let&#8217;s have a look at couple of scenarios. First let&#8217;s investigate executions inside one project regardless of which schedule it was triggered by. Let&#8217;s assume first that we are just looking for any executions that failed for that particular project. We will print the date when it happened sorted in ascending order.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3543,7 +3750,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="paragraph">
-<p>Sometimes the error does not manfiest itself in the error message directly and you need to look into logs. Take note that in both last cases we are getting the log and the error message as a string so you have full power of ruby to process it. Here we are using regular expressions which by itself gives you siginificant power but you can go even deeper if you need.</p>
+<p>Sometimes the error does not manifest itself in the error message directly and you need to look into logs. Take note that in both last cases we are getting the log and the error message as a string so you have full power of ruby to process it. Here we are using regular expressions which by itself gives you significant power but you can go even deeper if you need.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3564,7 +3771,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="paragraph">
-<p>Last example we will show is just a small extension. Imagine you would like to perform the same analysis on all projects in your account. This is usually the case since this type of analysing executions get exponentially more useful with growing number of executions or projects you need to investigate.</p>
+<p>Last example we will show is just a small extension. Imagine you would like to perform the same analysis on all projects in your account. This is usually the case since these type of analysis executions become exponentially more useful with growing number of executions or projects you need to investigate.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3591,18 +3798,18 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_56">Problem</h4>
+<h4 id="_problem_59">Problem</h4>
 <div class="paragraph">
-<p>You successfully mudularized your ETL into several modules you orchestrated. The problem is that it is hard to visualize the order of execution from the Data Administration console.</p>
+<p>You successfully modularized your ETL into several orchestrated modules. The problem is that it is hard to visualize the order of execution from the Data Administration console.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_56">Solution</h4>
+<h4 id="_solution_59">Solution</h4>
 <div class="paragraph">
-<p>There are plethora of very useful libraries that you can use in conjunction with GoodData SDK. One of those is Graphviz that is a C library but it has bindings to almost every language including Ruby. Graphviz is a visualization library and one of the features is visualizing Direct Acycclic Graphs which is exactly what an execution of several schedules bascially is.</p>
+<p>There are plethora of very useful libraries that you can use in conjunction with GoodData SDK. One of those is Graphviz that is a C library but it has bindings to almost every language including Ruby. Graphviz is a visualization library and one of the features allows visualization of Direct Acyclic Graphs which is exactly what an execution of several schedules basically is.</p>
 </div>
 <div class="paragraph">
-<p>As a prerequisite you have to install both <a href="http://www.graphviz.org/">Graphviz</a> and <a href="https://github.com/glejeune/Ruby-Graphviz">Graphviz ruby bindings</a>. I leave this as a exercise for the reader because this might be a little bit difficult and unfortuntely is different for every platform. If you encounter any errors try googling them or shoot us a message on github or support</p>
+<p>As a prerequisite you must install both <a href="http://www.graphviz.org/">Graphviz</a> and <a href="https://github.com/glejeune/Ruby-Graphviz">Graphviz ruby bindings</a>. This is user dependent as installation is different for every platform. If you encounter any errors try googling them or shoot us a message on GitHub or support.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3639,6 +3846,139 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_registering_a_notification_email">Registering a notification email</h3>
+<div class="paragraph">
+<p>by Vo Ha Tien</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_60">Problem</h4>
+<div class="paragraph">
+<p>When executing a process, obtaining up-to-date information about the status is difficult.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_60">Solution</h4>
+<div class="paragraph">
+<p>Register a notification rule on a process. You can configure notification rules to send an email whenever the defined conditions are met.</p>
+</div>
+<div class="paragraph">
+<p>The basic events are: GoodData::Subscription::PROCESS_SUCCESS_EVENT, GoodData::Subscription::PROCESS_FAILED_EVENT, GoodData::Subscription::PROCESS_SCHEDULED_EVENT, GoodData::Subscription::PROCESS_STARTED_EVENT. If you need to define your own special event, visit <a href="https://developer.gooddata.com/article/creating-custom-notification-events">creating custom notification events</a></p>
+</div>
+<div class="paragraph">
+<p>You can also add special variables to provide more information in the email. These can be used in the subject or email body.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata</span><span class="delimiter">'</span></span>
+
+<span class="constant">GoodData</span>.with_connection <span class="keyword">do</span> |client|
+  <span class="constant">GoodData</span>.with_project(<span class="string"><span class="delimiter">'</span><span class="content">project_id</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |project|
+    process = project.deploy_process(<span class="string"><span class="delimiter">'</span><span class="content">./path/to_cloud_connect_directory</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Test ETL Process</span><span class="delimiter">'</span></span>)
+
+    process.create_notification_rule(
+      <span class="key">email</span>: <span class="string"><span class="delimiter">'</span><span class="content">email you need to get the info</span><span class="delimiter">'</span></span>,
+      <span class="key">subject</span>: <span class="string"><span class="delimiter">'</span><span class="content">Get info from project ${params.PROJECT}</span><span class="delimiter">'</span></span>,
+      <span class="key">body</span>: <span class="string"><span class="delimiter">'</span><span class="content">This is a log for process ${params.PROCESS_NAME} [${params.PROCESS_ID}]: ${params.LOG}</span><span class="delimiter">'</span></span>,
+      <span class="key">events</span>: <span class="constant">GoodData</span>::<span class="constant">Subscription</span>::<span class="constant">PROCESS_FAILED_EVENT</span>
+    )
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also list all notification rules of a process and re-configure or delete the existing notification rule</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata</span><span class="delimiter">'</span></span>
+
+<span class="constant">GoodData</span>.with_connection <span class="keyword">do</span> |client|
+  <span class="constant">GoodData</span>.with_project(<span class="string"><span class="delimiter">'</span><span class="content">project_id</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |project|
+    project.processes.each <span class="keyword">do</span> |process|
+      process.notification_rules.each <span class="keyword">do</span> |rule|
+        rule.subject = <span class="string"><span class="delimiter">'</span><span class="content">Changed subject</span><span class="delimiter">'</span></span>
+        rule.save
+        rule.delete
+      <span class="keyword">end</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When registering a notification rule, GoodData will automatically create a channel for each email target if it&#8217;s not exist. You can manually create a channel</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata</span><span class="delimiter">'</span></span>
+
+<span class="constant">GoodData</span>.with_connection <span class="keyword">do</span> |client|
+  client.user.create_channel
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can list all channels, re-configure or delete the existing channel</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata</span><span class="delimiter">'</span></span>
+
+<span class="constant">GoodData</span>.with_connection <span class="keyword">do</span> |client|
+  client.user.channels.each <span class="keyword">do</span> |channel|
+    channel.to = <span class="string"><span class="delimiter">'</span><span class="content">another email</span><span class="delimiter">'</span></span>
+    channel.save
+    channel.delete
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_automated_data_distribution_add">Automated Data Distribution (ADD)</h3>
+<div class="paragraph">
+<p>by Vo Ha Tien</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_61">Problem</h4>
+<div class="paragraph">
+<p>You would like to upload data from the Data Warehouse to a workspace.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_61">Solution</h4>
+<div class="paragraph">
+<p>You must have the output stage associated with the workspace you need to upload data to.
+An ADD process is created after associating the workspace with the output stage.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata</span><span class="delimiter">'</span></span>
+
+<span class="constant">GoodData</span>.with_connection <span class="keyword">do</span> |client|
+  <span class="constant">GoodData</span>.with_project(<span class="string"><span class="delimiter">'</span><span class="content">project_id</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |project|
+    ads = client.create_datawarehouse(<span class="key">title</span>: <span class="string"><span class="delimiter">'</span><span class="content">Test ADS</span><span class="delimiter">'</span></span>, <span class="key">auth_token</span>: <span class="string"><span class="delimiter">'</span><span class="content">ADS_CREATION_TOKEN</span><span class="delimiter">'</span></span>)
+    output_stage = project.create_output_stage(ads)
+    puts output_stage.sql_diff
+    add_process = project.add.process
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3650,13 +3990,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_57">Problem</h4>
+<h4 id="_problem_62">Problem</h4>
 <div class="paragraph">
-<p>You have an existing report and you would like to execute it programatically.</p>
+<p>You have an existing report and you would like to execute it programmatically.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_57">Solution</h4>
+<h4 id="_solution_62">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
@@ -3678,13 +4018,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_58">Problem</h4>
+<h4 id="_problem_63">Problem</h4>
 <div class="paragraph">
 <p>You created a new version of a project. You made some changes to the reports and you would like to verify that the report is still computing the same numbers.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_58">Solution</h4>
+<h4 id="_solution_63">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
@@ -3745,13 +4085,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Korcak</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_59">Problem</h4>
+<h4 id="_problem_64">Problem</h4>
 <div class="paragraph">
 <p>You have report and you want to update report definition in easy way. Perhaps you need to modify multiple reports in one or more projects.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_59">Solution</h4>
+<h4 id="_solution_64">Solution</h4>
 <div class="paragraph">
 <p>Use the Report#update_definition with block argument in following way.</p>
 </div>
@@ -3811,13 +4151,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_60">Problem</h4>
+<h4 id="_problem_65">Problem</h4>
 <div class="paragraph">
 <p>Occasionally you need to know how many rows there are in each dataset.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_60">Solution</h4>
+<h4 id="_solution_65">Solution</h4>
 <div class="paragraph">
 <p>This is surprisingly difficult to do in GoodData UI but it is simple with SDK. Here we are going to create the necessary metrics on the fly through inspection of a blueprint. Then we will create a report that will contain those metrics and compute it.</p>
 </div>
@@ -3856,24 +4196,20 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_discussion_19">Discussion</h4>
-
-</div>
 </div>
 <div class="sect2">
-<h3 id="_reseting_report_color_map">Reseting Report Color Map</h3>
+<h3 id="_resetting_report_color_map">Resetting Report Color Map</h3>
 <div class="paragraph">
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_61">Problem</h4>
+<h4 id="_problem_66">Problem</h4>
 <div class="paragraph">
-<p>You have a report somebody set up a colormapping on. You would like to remove it.</p>
+<p>You have a report somebody set up a color mapping on. You would like to remove it.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_61">Solution</h4>
+<h4 id="_solution_66">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
@@ -3899,13 +4235,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_62">Problem</h4>
+<h4 id="_problem_67">Problem</h4>
 <div class="paragraph">
 <p>You would like to make some ad hoc computation</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_62">Solution</h4>
+<h4 id="_solution_67">Solution</h4>
 <div class="paragraph">
 <p>We are using the recipe <a href="#_working_with_hr_demo_project">Working with HR Demo project</a> here so spin it up if you want to follow the code.</p>
 </div>
@@ -3959,13 +4295,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_63">Problem</h4>
+<h4 id="_problem_68">Problem</h4>
 <div class="paragraph">
 <p>You have computed a report now you would like to get dirty with the data</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_63">Solution</h4>
+<h4 id="_solution_68">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
@@ -4057,13 +4393,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_64">Problem</h4>
+<h4 id="_problem_69">Problem</h4>
 <div class="paragraph">
-<p>You would like to export the report from GoodData into one of the typical formats for further processing or presetnation</p>
+<p>You would like to export the report from GoodData into one of the typical formats for further processing or presentation.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_64">Solution</h4>
+<h4 id="_solution_69">Solution</h4>
 <div class="paragraph">
 <p>There are a simple way how to export a report from gooddata</p>
 </div>
@@ -4075,14 +4411,14 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 
 <span class="constant">GoodData</span>.with_connection <span class="keyword">do</span> |c|
   <span class="constant">GoodData</span>.with_project(<span class="string"><span class="delimiter">'</span><span class="content">project_id</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |project|
-    result = project.reports.export(<span class="symbol">:csv</span>)
+    result = project.reports(<span class="string"><span class="delimiter">'</span><span class="content">report_identifier</span><span class="delimiter">'</span></span>).export(<span class="symbol">:csv</span>)
     puts result
   <span class="keyword">end</span>
 <span class="keyword">end</span></code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_discussion_20">Discussion</h5>
+<h5 id="_discussion_19">Discussion</h5>
 <div class="paragraph">
 <p>There are more formats supported and either of <code>:csv, :xls, :xlsx or :pdf</code> should work.</p>
 </div>
@@ -4112,13 +4448,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_65">Problem</h4>
+<h4 id="_problem_70">Problem</h4>
 <div class="paragraph">
 <p>Occasionally you would like to clean up your project. The simplest way to do it is to get rid of the old version of reports.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_65">Solution</h4>
+<h4 id="_solution_70">Solution</h4>
 <div class="paragraph">
 <p>There are a simple way how to export a report from gooddata</p>
 </div>
@@ -4145,13 +4481,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_66">Problem</h4>
+<h4 id="_problem_71">Problem</h4>
 <div class="paragraph">
 <p>Computing report is great but without filter it is not that great.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_66">Solution</h4>
+<h4 id="_solution_71">Solution</h4>
 <div class="paragraph">
 <p>While SDK does not provide full support for all types of filters. There are couple of useful wrappers that make it easier. If you need something special you can always go to the raw APIs. Currently there are two types of filters supported directly.</p>
 </div>
@@ -4249,7 +4585,7 @@ puts project.compute_report(<span class="key">left</span>: project.metrics.first
 <p>by Patrick McConlogue, Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_67">Problem</h4>
+<h4 id="_problem_72">Problem</h4>
 <div class="paragraph">
 <p>You have several attributes in a project. You would like to create some basic metric out of them.</p>
 </div>
@@ -4261,7 +4597,7 @@ puts project.compute_report(<span class="key">left</span>: project.metrics.first
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_67">Solution</h4>
+<h4 id="_solution_72">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: UTF-8</span>
@@ -4287,7 +4623,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Patrick McConlogue, Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_68">Problem</h4>
+<h4 id="_problem_73">Problem</h4>
 <div class="paragraph">
 <p>You have several facts in a project. You would like to create some basic metric out of them.</p>
 </div>
@@ -4299,7 +4635,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_68">Solution</h4>
+<h4 id="_solution_73">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: UTF-8</span>
@@ -4331,7 +4667,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Korcak, Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_69">Problem</h4>
+<h4 id="_problem_74">Problem</h4>
 <div class="paragraph">
 <p>You would like to store information about all project metrics and attributes in CSV.</p>
 </div>
@@ -4343,7 +4679,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_69">Solution</h4>
+<h4 id="_solution_74">Solution</h4>
 <div class="sect4">
 <h5 id="_metrics">Metrics</h5>
 <div class="listingblock">
@@ -4402,7 +4738,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_discussion_21">Discussion</h4>
+<h4 id="_discussion_20">Discussion</h4>
 <div class="sect4">
 <h5 id="_folders">Folders</h5>
 <div class="paragraph">
@@ -4480,13 +4816,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_70">Problem</h4>
+<h4 id="_problem_75">Problem</h4>
 <div class="paragraph">
-<p>You have a project and you would like to update formatting of all metrics programatically. They are currently formatted for dollar values but you would like to change the all formats to Euro.</p>
+<p>You have a project and you would like to update formatting of all metrics programmatically. They are currently formatted for dollar values but you would like to change all formats to Euro.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_70">Solution</h4>
+<h4 id="_solution_75">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
@@ -4511,7 +4847,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Zdenek Svoboda</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_71">Problem</h4>
+<h4 id="_problem_76">Problem</h4>
 <div class="paragraph">
 <p>You want to create advanced MAQL metric.</p>
 </div>
@@ -4523,7 +4859,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_71">Solution</h4>
+<h4 id="_solution_76">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: UTF-8</span>
@@ -4554,7 +4890,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_discussion_22">Discussion</h4>
+<h4 id="_discussion_21">Discussion</h4>
 <div class="paragraph">
 <p>Please note that the MAQL statement uses three ways how to reference the underlying objects (e.g. facts or metrics that are part of the MAQL statement)</p>
 </div>
@@ -4573,6 +4909,66 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_creating_metric_with_filter">Creating Metric with filter</h3>
+<div class="paragraph">
+<p>by Tomas Svarovsky</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_77">Problem</h4>
+<div class="paragraph">
+<p>You want to create a more complicated metric that has filter on values included</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_77">Solution</h4>
+<div class="paragraph">
+<p>In this case we will actually create the raw MAQL metric along with the filter values. The main problem is that you have to find out the URLs of all the objects and values. This is generally tricky but SDK can simplify this a bit.</p>
+</div>
+<div class="paragraph">
+<p>We will try to create a metric that looks like this in "human readable" MAQL.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SELECT COUNT(City) WHERE Continent IN ('Europe', 'Africa')</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is actually not a MAQL that would be possible to post to the API. You must translate all the objects into their valid URLs. The MAQL then might look like this (obviously the URLs will look different in your particular case)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SELECT COUNT([/gdc/md/e8pid3efwftbc3pc13nnnau4xymb0198/obj/23]) WHERE [/gdc/md/e8pid3efwftbc3pc13nnnau4xymb0198/obj/72] IN ([/gdc/md/e8pid3efwftbc3pc13nnnau4xymb0198/obj/72/elements?id=0], [/gdc/md/e8pid3efwftbc3pc13nnnau4xymb0198/obj/72/elements?id=1])</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s have a look how we might write a code that does this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: UTF-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Connect to GoodData platform</span>
+<span class="constant">GoodData</span>.with_connection <span class="keyword">do</span> |c|
+  <span class="constant">GoodData</span>.with_project(<span class="string"><span class="delimiter">'</span><span class="content">project_id</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |project|
+
+    <span class="comment"># Let's find the city attribute - here we assume identifer atttribute.cities.city</span>
+    city_attribute = project.attributes(<span class="string"><span class="delimiter">'</span><span class="content">atttribute.cities.city</span><span class="delimiter">'</span></span>)
+
+    <span class="comment"># Let's find the continent label - here we assume identifer label.cities.continent.name</span>
+    continent_label = project.labels(<span class="string"><span class="delimiter">'</span><span class="content">label.cities.continent.name</span><span class="delimiter">'</span></span>)
+    filter_values = [<span class="string"><span class="delimiter">'</span><span class="content">Europe</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Africa</span><span class="delimiter">'</span></span>].map { |val| <span class="string"><span class="delimiter">&quot;</span><span class="content">[</span><span class="inline"><span class="inline-delimiter">#{</span>continent_label.find_value_uri(val)<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span> }.join(<span class="string"><span class="delimiter">'</span><span class="content">, </span><span class="delimiter">'</span></span>)
+
+    m = project.create_metric(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT COUNT([</span><span class="inline"><span class="inline-delimiter">#{</span>city_attribute.uri<span class="inline-delimiter">}</span></span><span class="content">]) WHERE </span><span class="inline"><span class="inline-delimiter">#{</span>continent_label.uri<span class="inline-delimiter">}</span></span><span class="content"> IN </span><span class="inline"><span class="inline-delimiter">#{</span>filter_values<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>, <span class="key">extended_notation</span>: <span class="predefined-constant">false</span>)
+    puts m.execute
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -4584,7 +4980,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Korcak</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_72">Problem</h4>
+<h4 id="_problem_78">Problem</h4>
 <div class="paragraph">
 <p>You would like to list dashboards programmatically.</p>
 </div>
@@ -4596,7 +4992,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_72">Solution</h4>
+<h4 id="_solution_78">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: UTF-8</span>
@@ -4619,7 +5015,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_73">Problem</h4>
+<h4 id="_problem_79">Problem</h4>
 <div class="paragraph">
 <p>You would like to list dashboards and their tabs programmatically.</p>
 </div>
@@ -4631,7 +5027,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_73">Solution</h4>
+<h4 id="_solution_79">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: UTF-8</span>
@@ -4673,7 +5069,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_74">Problem</h4>
+<h4 id="_problem_80">Problem</h4>
 <div class="paragraph">
 <p>You would like to work with dashboard tab a little. List how many reports are on the tab, if they are filtered etc.</p>
 </div>
@@ -4685,7 +5081,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_74">Solution</h4>
+<h4 id="_solution_80">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: UTF-8</span>
@@ -4761,13 +5157,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_75">Problem</h4>
+<h4 id="_problem_81">Problem</h4>
 <div class="paragraph">
 <p>You would like to set a data permission (user filter or MUF filter) for one or two users.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_75">Solution</h4>
+<h4 id="_solution_81">Solution</h4>
 <div class="paragraph">
 <p>SDK offers couple of convenience features for doing this. Let&#8217;s first recap what we need to set up a data permission filter. We&#8217;ll be setting a simple filter along these lines</p>
 </div>
@@ -4811,7 +5207,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
     <span class="comment"># Let's construct filters we are going to set up</span>
     <span class="comment"># We will do it for two hypothetical users</span>
     filters = [
-      [<span class="string"><span class="delimiter">'</span><span class="content">john.doe@example.com</span><span class="delimiter">'</span></span>, label.uri, <span class="string"><span class="delimiter">'</span><span class="content">San Francisco</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Amsterdam</span><span class="delimiter">'</span></span>]
+      [<span class="string"><span class="delimiter">'</span><span class="content">john.doe@example.com</span><span class="delimiter">'</span></span>, label.uri, <span class="string"><span class="delimiter">'</span><span class="content">San Francisco</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Amsterdam</span><span class="delimiter">'</span></span>],
       [<span class="string"><span class="delimiter">'</span><span class="content">jane.doe@example.com</span><span class="delimiter">'</span></span>, label.uri, <span class="string"><span class="delimiter">'</span><span class="content">San Francisco</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Prague</span><span class="delimiter">'</span></span>]
     ]
     <span class="comment"># Obvious question might be how do you know that the values are correct</span>
@@ -4830,13 +5226,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_76">Problem</h4>
+<h4 id="_problem_82">Problem</h4>
 <div class="paragraph">
 <p>You have a project that has the data permissions set up. You would like to review them.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_76">Solution</h4>
+<h4 id="_solution_82">Solution</h4>
 <div class="paragraph">
 <p>There is no UI that would provide a good overview and API is a little crude but with help of SDK you can get around that.</p>
 </div>
@@ -4861,13 +5257,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_77">Problem</h4>
+<h4 id="_problem_83">Problem</h4>
 <div class="paragraph">
-<p>You would like to set adata permissions for multiple users. You have a CSV with two columns that associate user with a single data permssion&#8217;s value. We&#8217;ll use the same city example from the examples above.</p>
+<p>You would like to set data permissions for multiple users. You have a CSV with two columns that associate user with a single data permission&#8217;s value. We&#8217;ll use the same city example from the examples above.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_77">Solution</h4>
+<h4 id="_solution_83">Solution</h4>
 <div class="paragraph">
 <p>SDK offers couple of convenience features for doing this. Let&#8217;s first recap what we need to set up a filter.</p>
 </div>
@@ -4961,13 +5357,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_78">Problem</h4>
+<h4 id="_problem_84">Problem</h4>
 <div class="paragraph">
-<p>You would like to set adata permissions for multiple users. You have a CSV with two columns that associate user with a single data permssion&#8217;s value. We&#8217;ll use the same city example from the examples above.</p>
+<p>You would like to set data permissions for multiple users. You have a CSV with two columns that associate user with a single data permission&#8217;s value. We&#8217;ll use the same city example from the examples above.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_78">Solution</h4>
+<h4 id="_solution_84">Solution</h4>
 <div class="paragraph">
 <p>SDK offers couple of convenience features for doing this. Let&#8217;s first recap what we need to set up a filter.</p>
 </div>
@@ -5011,7 +5407,7 @@ jane.doe@example.com,San Francisco,Prague,Berlin</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Please note that the CSV format is different frpom the previous example. There are no headers because the file can have different number of columns on each line.</p>
+<p>Please note that the CSV format is different from the previous example. There are no headers because the file can have a different number of columns on each line.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5061,13 +5457,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_79">Problem</h4>
+<h4 id="_problem_85">Problem</h4>
 <div class="paragraph">
 <p>You have variable in your project and you would like to see the values in a readable fashion.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_79">Solution</h4>
+<h4 id="_solution_85">Solution</h4>
 <div class="paragraph">
 <p>SDK tries to hide the differences from Data Permissions so this recipe is analogy to <a href="#_list_data_permissions">List Data Permissions</a> recipe.</p>
 </div>
@@ -5100,6 +5496,178 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect1">
+<h2 id="_12_working_with_ads">12 Working With Ads</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_executing_sql_queries_on_ads">Executing SQL Queries on ADS</h3>
+<div class="paragraph">
+<p>by Patrick McConlogue</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_86">Problem</h4>
+<div class="paragraph">
+<p>You have a SQL query you would like to run on ADS (Vertica) programatically with Ruby.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_86">Solution</h4>
+<div class="paragraph">
+<p>Using the GoodData DataWarehouse GEM you have several ways to execute SQL on the platform. Note, interfacing with ADS requires the use of JRuby.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata_datawarehouse</span><span class="delimiter">'</span></span>
+
+dwh = <span class="constant">GoodData</span>::<span class="constant">Datawarehouse</span>.new(<span class="string"><span class="delimiter">'</span><span class="content">you@gooddata.com</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">yourpass</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">your ADS instance id</span><span class="delimiter">'</span></span>)
+
+dwh.execute(<span class="string"><span class="delimiter">'</span><span class="content">ALTER TABLE my_table ADD COLUMN col3 INTEGER</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When running results that process or select use this method to computer the data in the enumerator.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">dwh.execute_select(<span class="string"><span class="delimiter">'</span><span class="content">SELECT * FROM my_table ORDER BY col1</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |row|
+        puts row[<span class="symbol">:col1</span>]
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_importing_csv_files_to_ads">Importing CSV files to ADS</h3>
+<div class="paragraph">
+<p>by Patrick McConlogue</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_87">Problem</h4>
+<div class="paragraph">
+<p>You would like to import CSV files into ADS using Ruby.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_87">Solution</h4>
+<div class="paragraph">
+<p>With the GoodData DataWarehouse GEM you can import local files.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata_datawarehouse</span><span class="delimiter">'</span></span>
+
+dwh = <span class="constant">GoodData</span>::<span class="constant">Datawarehouse</span>.new(<span class="string"><span class="delimiter">'</span><span class="content">you@gooddata.com</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">yourpass</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">your ADS instance id</span><span class="delimiter">'</span></span>)
+
+dwh.csv_to_new_table(<span class="string"><span class="delimiter">'</span><span class="content">my_table</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">path/to/my.csv</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_editing_tables_in_ads">Editing Tables In ADS</h3>
+<div class="paragraph">
+<p>by Patrick McConlogue</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_88">Problem</h4>
+<div class="paragraph">
+<p>Using Ruby, you would like to edit, rename, validate existence, or delete a table.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_88">Solution</h4>
+<div class="paragraph">
+<p>With the GoodData DataWarehouse gem you are given many methods to work with tables. Note, interfacing with ADS requires the use of JRuby.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata_datawarehouse</span><span class="delimiter">'</span></span>
+
+dwh = <span class="constant">GoodData</span>::<span class="constant">Datawarehouse</span>.new(<span class="string"><span class="delimiter">'</span><span class="content">you@gooddata.com</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">yourpass</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">your ADS instance id</span><span class="delimiter">'</span></span>)
+
+<span class="comment"># Check if a table exists?</span>
+dwh.table_exists?(<span class="string"><span class="delimiter">'</span><span class="content">my_table</span><span class="delimiter">'</span></span>) <span class="comment"># BOOL</span>
+
+<span class="comment"># Rename a table</span>
+dwh.rename_table(<span class="string"><span class="delimiter">'</span><span class="content">my_table</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">my_new_table</span><span class="delimiter">'</span></span>)
+
+<span class="comment"># Drop table</span>
+dwh.drop_table(<span class="string"><span class="delimiter">'</span><span class="content">my_new_table</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_table_in_ads">Create Table In ADS</h3>
+<div class="paragraph">
+<p>by Patrick McConlogue</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_89">Problem</h4>
+<div class="paragraph">
+<p>Using Ruby, you would like to create a table in ADS.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_89">Solution</h4>
+<div class="paragraph">
+<p>With the GoodData DataWarehouse gem you are given many methods to work with tables. Note, interfacing with ADS requires the use of JRuby.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata_datawarehouse</span><span class="delimiter">'</span></span>
+
+dwh = <span class="constant">GoodData</span>::<span class="constant">Datawarehouse</span>.new(<span class="string"><span class="delimiter">'</span><span class="content">you@gooddata.com</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">yourpass</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">your ADS instance id</span><span class="delimiter">'</span></span>)
+
+<span class="comment"># Check if a table exists?</span>
+dwh.create_table(<span class="string"><span class="delimiter">'</span><span class="content">my_table</span><span class="delimiter">'</span></span>) <span class="comment"># BOOL</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_columns_ads_table">Get Columns ADS Table</h3>
+<div class="paragraph">
+<p>by Patrick McConlogue</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_90">Problem</h4>
+<div class="paragraph">
+<p>Using Ruby, you would like to create a table in ADS.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_90">Solution</h4>
+<div class="paragraph">
+<p>With the GoodData DataWarehouse gem you are given many methods to work with tables. Note, interfacing with ADS requires the use of JRuby.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata_datawarehouse</span><span class="delimiter">'</span></span>
+
+dwh = <span class="constant">GoodData</span>::<span class="constant">Datawarehouse</span>.new(<span class="string"><span class="delimiter">'</span><span class="content">you@gooddata.com</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">yourpass</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">your ADS instance id</span><span class="delimiter">'</span></span>)
+
+<span class="comment"># Get columns for table</span>
+columns = dwh.get_columns(<span class="string"><span class="delimiter">'</span><span class="content">my_table</span><span class="delimiter">'</span></span>) <span class="comment"># [{column_name: 'col1', data_type: 'varchar(88)'}, {column_name: 'col2', data_type: 'int'}]</span>
+
+<span class="comment"># Add a new column</span>
+dwh.execute(<span class="string"><span class="delimiter">'</span><span class="content">ALTER TABLE my_table ADD COLUMN col3 INTEGER</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_12_working_with_blueprints">12 Working With Blueprints</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -5114,7 +5682,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>The main difference is the fact that when we talk about model we mean a specific instance of a project which has specific instance of model with all its attributes and facts that live at GoodData platform. Each field has a URI and object_id and you can query it using the platform API. You can also ask questions like "What object in the model has object_id 1532?" or "Can you give me a link to dataset 'users' in the model?".</p>
 </div>
 <div class="paragraph">
-<p>When we talk about blueprint on the other hand we mean the abstract prescription that tells us how to create the model. Blueprint does not contain many of the details most prominently object_ids and URIs and strictly speaking each time you use blueprint to create a model those things might be different. When a model is created from blueprint as a sideffect all the URIs and id are created.</p>
+<p>When we talk about blueprint on the other hand we mean the abstract prescription that tells us how to create the model. A blueprint does not contain many of the details most prominently object_ids and URIs and strictly speaking each time you use a blueprint to create a model those things might be different. When a model is created from blueprint as a side effect, all the URIs and ids are created.</p>
 </div>
 <div class="paragraph">
 <p>So what are the benefits of the blueprint you might ask? Blueprint was specifically designed so you can have a description of the model that can live outside of GoodData platform. It has textual representation which you can commit into git and work with it in a programmatic way. Second it is intended that the many projects are created from one blueprint.</p>
@@ -5126,13 +5694,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_80">Problem</h4>
+<h4 id="_problem_91">Problem</h4>
 <div class="paragraph">
-<p>You would like to create a new project with a data model programatically.</p>
+<p>You would like to create a new project with a data model programmatically.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_80">Solution</h4>
+<h4 id="_solution_91">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
@@ -5162,11 +5730,11 @@ project.facts(<span class="string"><span class="delimiter">'</span><span class="
 </div>
 </div>
 <div class="paragraph">
-<p>This created a project with very simple model with just 2 datasets. One is date dimension. The other is a typical fact table. For another more complex example chec out the recipe "Working with HR Demo project" which uses many of the features we will explain here.</p>
+<p>This created a project with very simple model with just two datasets. One is date dimension. The other is a typical fact table. For another more complex example check out the "Working with HR Demo project" recipe which uses many of the features we will explain here.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_discussion_23">Discussion</h4>
+<h4 id="_discussion_22">Discussion</h4>
 <div class="paragraph">
 <p>Let&#8217;s have a look at couple of other variations and more complex examples.</p>
 </div>
@@ -5217,7 +5785,7 @@ add_attribute</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Identifier can be anything. The only condition is that it has to be unique in the context of a project. No 2 objects may have the same identifer. That being said it is useful to have some kind of convention how you assign the identifiers.</p>
+<p>Identifier can be anything. The only condition is that it has to be unique in the context of a project. No 2 objects may have the same identifier. That being said it is useful to have some kind of convention how you assign the identifiers.</p>
 </div>
 <div class="paragraph">
 <p>Exception to this rule are references and date_references which we will discuss separately.</p>
@@ -5279,7 +5847,7 @@ blueprint.validate <span class="comment"># =&gt; [{:type=&gt;:more_than_on_ancho
 </div>
 </div>
 <div class="paragraph">
-<p>Anchor is the thing you can reference from other datasets. If you want to do that you have to define a label. Anchor can have multiple labels same as attribute. We strongly recommend not to define anchor with labels on fact tabels (they are usually not referenced). The only exception to this rule is if you need to upsert data.</p>
+<p>An anchor allows you to reference from other datasets. To do this you must first define a label. Anchors can have multiple labels the same as an attribute. We strongly recommend not to define an anchor with labels on fact tables (they are usually not referenced). The only exception to this rule is if you need to upsert data.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5302,7 +5870,7 @@ blueprint.valid? <span class="comment"># =&gt; true</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Good question is "why you have to define the anchor if it has no labels?". The reason is that you still need the underlying attribute if you want to construct the count metric for fact table to answere question "How many lines there is in the 'dataset.sales' dataset?". You would do it as follows with SDK (with previous model).</p>
+<p>A good question is "why you have to define the anchor if it has no labels?". The reason is that you still need the underlying attribute if you want to construct the count metric for fact table to answer question "How many lines there is in the 'dataset.sales' dataset?". You can do this as follows with the SDK (with previous model).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5313,7 +5881,7 @@ blueprint.valid? <span class="comment"># =&gt; true</span></code></pre>
 <div class="sect4">
 <h5 id="_defining_date_dimensions">Defining date dimensions</h5>
 <div class="paragraph">
-<p>In all tools and even in MAQL date dimensions are reprseneted as single unit (as in blueprint builder add_date_dimension). This is great for readability but might be misleading. The fact is that date dimension is several datasets that contain typically ~18 attributes. If you understand this it is probably not surprising that the parameter to 'add_date_dimension' is not an identifier but a name that will be used in titles and identifiers of all attributes. It is also a name that you can use in add_date function. Here is an example.</p>
+<p>Dimensions in all tools and even in MAQL date are represented as a single unit (as in blueprint builder add_date_dimension). This is great for readability but can be misleading. The fact is that date dimension has several datasets that typically contain ~18 attributes. It is probably not surprising that the parameter to 'add_date_dimension' is not an identifier but a name that is used in titles and identifiers of all attributes. It is also a name that you can use in add_date function. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5397,7 +5965,7 @@ project.facts(<span class="string"><span class="delimiter">'</span><span class="
 <div class="sect4">
 <h5 id="_specifying_data_types">Specifying data types</h5>
 <div class="paragraph">
-<p>Ocasionally the default datatypes of the fields will not be what you want. You can redefine them for both labels and facts as exepected with parameter :gd_data_type. There is more information about this in a following recipe.</p>
+<p>Occasionally the default data types of the fields will not be what you want. You can redefine them for both labels and facts as expected with parameter :gd_data_type. There is more information about this in a following recipe.</p>
 </div>
 </div>
 </div>
@@ -5408,13 +5976,13 @@ project.facts(<span class="string"><span class="delimiter">'</span><span class="
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_81">Problem</h4>
+<h4 id="_problem_92">Problem</h4>
 <div class="paragraph">
 <p>You have an existing project and would like to reverse engineer it&#8217;s blueprint.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_81">Solution</h4>
+<h4 id="_solution_92">Solution</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
@@ -5444,13 +6012,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_82">Problem</h4>
+<h4 id="_problem_93">Problem</h4>
 <div class="paragraph">
 <p>You would like to load data into project.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_82">Solution</h4>
+<h4 id="_solution_93">Solution</h4>
 <div class="paragraph">
 <p>To load data you have to have 3 things. Blueprint, project and data.</p>
 </div>
@@ -5531,13 +6099,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Korcak</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_83">Problem</h4>
+<h4 id="_problem_94">Problem</h4>
 <div class="paragraph">
 <p>You would like to load multiple data sets into project at once.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_83">Solution</h4>
+<h4 id="_solution_94">Solution</h4>
 <div class="paragraph">
 <p>The GoodData platform supports loading multiple datasets from a set of CSV files in a single task.
 In addition to loading a single CSV at a time, you can now upload your CSV files,
@@ -5597,13 +6165,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_84">Problem</h4>
+<h4 id="_problem_95">Problem</h4>
 <div class="paragraph">
 <p>You need to upload dates but you have a nonstandard formatting</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_84">Solution</h4>
+<h4 id="_solution_95">Solution</h4>
 <div class="paragraph">
 <p>You can specify a date loading format in your blueprint. If you do not specify any format then the default <em>MM/dd/yyyy</em> format is used</p>
 </div>
@@ -5687,13 +6255,13 @@ We did not have to update the project to be able to load dates in a different fo
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_85">Problem</h4>
+<h4 id="_problem_96">Problem</h4>
 <div class="paragraph">
 <p>You would like to update a project with additional fields</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_85">Solution</h4>
+<h4 id="_solution_96">Solution</h4>
 <div class="paragraph">
 <p>Blueprints are easy to create programmatically and even to merge them together. In this example we will create a simple blueprint with one dataset and then add an additional field into blueprint and update the model.</p>
 </div>
@@ -5735,7 +6303,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_discussion_24">Discussion</h4>
+<h4 id="_discussion_23">Discussion</h4>
 <div class="paragraph">
 <p>In the example above we have created a new model and updated it right away. This is not a typical situation however and there are couple of things that you need to be aware of.</p>
 </div>
@@ -5781,13 +6349,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_86">Problem</h4>
+<h4 id="_problem_97">Problem</h4>
 <div class="paragraph">
 <p>You would like to specify a different data type for attribute or fact in a blueprint</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_86">Solution</h4>
+<h4 id="_solution_97">Solution</h4>
 <div class="paragraph">
 <p>Each column in blueprint is eventually translated into a physical column in a database. While the defaults are typically what you want sometimes it might be useful to override them. You can specify the data type with gd_data_type clause.</p>
 </div>
@@ -5826,7 +6394,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_discussion_25">Discussion</h4>
+<h4 id="_discussion_24">Discussion</h4>
 <div class="paragraph">
 <p>These data types are currently supported on the platform</p>
 </div>
@@ -5867,13 +6435,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_87">Problem</h4>
+<h4 id="_problem_98">Problem</h4>
 <div class="paragraph">
 <p>You would like to use folders for organizing your project&#8217;s model</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_87">Solution</h4>
+<h4 id="_solution_98">Solution</h4>
 <div class="paragraph">
 <p>By default all the attributes and facts are automatically assigned a folder based on it&#8217;s dataset name. This name is either generated from the dataset&#8217;s name or title (if defined). You can override this default and specify your own folder for any field.</p>
 </div>
@@ -5919,7 +6487,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_discussion_26">Discussion</h4>
+<h4 id="_discussion_25">Discussion</h4>
 <div class="paragraph">
 <p>Folders are not removed. If you would publish a model that doesn&#8217;t contain an existing folder, the folder isn&#8217;t automatically removed (it is empty).</p>
 </div>
@@ -5931,7 +6499,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_88">Problem</h4>
+<h4 id="_problem_99">Problem</h4>
 <div class="paragraph">
 <p>You would like to create the whole project from code for whatever reason.</p>
 </div>
@@ -5943,7 +6511,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_88">Solution</h4>
+<h4 id="_solution_99">Solution</h4>
 <div class="paragraph">
 <p>What we will do is to create a simple project with 4 datasets. Load couple of line of data create a simple report and invite 2 other people to it. All this will fit on one page of code. Let&#8217;s get to it.</p>
 </div>
@@ -6005,7 +6573,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Korcak</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_89">Problem</h4>
+<h4 id="_problem_100">Problem</h4>
 <div class="paragraph">
 <p>You want to specify certain label&#8217;s data type see <a href="http://developer.gooddata.com/article/setting-up-data-for-geo-charts">this document</a> for more details.</p>
 </div>
@@ -6017,7 +6585,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_89">Solution</h4>
+<h4 id="_solution_100">Solution</h4>
 <div class="paragraph">
 <p>We&#8217;ll create a simple project&#8217;s blueprint that contains a label with the 'GDC.link' (hyperlink) datatype in the code snippet below.</p>
 </div>
@@ -6129,13 +6697,13 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_90">Problem</h4>
+<h4 id="_problem_101">Problem</h4>
 <div class="paragraph">
 <p>I created a model and now found out that I would like to move a field to different dataset.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_90">Solution</h4>
+<h4 id="_solution_101">Solution</h4>
 <div class="paragraph">
 <p>We will use variation of our hr demo model. If you look at that model you can see that we have an attribute <strong>region</strong> defined on departments dataset. This is how you (hypothetically) originally created the project and everything was fine but you realized that you would like to assign the region to people dataset not departments dataset.</p>
 </div>
@@ -6179,13 +6747,13 @@ project.upload(employee_data_with_dep, blueprint, <span class="string"><span cla
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_91">Problem</h4>
+<h4 id="_problem_102">Problem</h4>
 <div class="paragraph">
-<p>I would like to play with blueprints but I cannot come up with some data and model of a ptoy project. Can you give me any?</p>
+<p>I would like to play with blueprints but I cannot come up with some data and model of a toy project.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_91">Solution</h4>
+<h4 id="_solution_102">Solution</h4>
 <div class="paragraph">
 <p>Yes. Use our HR example which models a small company and people inside it. We tried to use majority of the features that the blueprint builder supports so you can take it as a starting point when you are creating yours.</p>
 </div>
@@ -6286,9 +6854,9 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_92">Problem</h4>
+<h4 id="_problem_103">Problem</h4>
 <div class="paragraph">
-<p>You created a quick protoype but you found out that it needs some touch ups.</p>
+<p>You created a quick prototype but you found out that it needs some touching up.</p>
 </div>
 </div>
 <div class="sect3">
@@ -6298,7 +6866,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_92">Solution</h4>
+<h4 id="_solution_103">Solution</h4>
 <div class="paragraph">
 <p>Use SDK refactoring features.</p>
 </div>
@@ -6395,13 +6963,13 @@ refactored_blueprint.datasets(<span class="string"><span class="delimiter">'</sp
 </div>
 </div>
 <div class="paragraph">
-<p>You can see that the attribute is gone with labels. Only facts remained. New reference was added so the reports should still be working. This might seems just like a minor thing but once you start creating more complex models with multiple stars you find this techique a necessity so why not automate it.</p>
+<p>You can see that the attribute has gone alongside the labels. Only facts remain. A new reference was added so the reports should still be working. This might seem just a minor issue but once you start creating more complex models with multiple stars you find this technique a necessity so why not automate it?</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_multiple_facts_in_one_dataset">Multiple facts in one dataset</h5>
 <div class="paragraph">
-<p>Another problem we will look at is splitting fact tables because of facts. Conside this model</p>
+<p>Another problem we will look at is splitting fact tables because of facts. Consider this model:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6425,7 +6993,7 @@ refactored_blueprint.datasets(<span class="string"><span class="delimiter">'</sp
 <p>What you want to do is have a look at how many shipments were ordered and shipped on particular day. But if you keep the facts in one dataset you will have all kinds of trouble with nil values. Much better is to split the fact tables in two. Again we can try doing that with SDK</p>
 </div>
 <div class="paragraph">
-<p>Note: it seems it currently does not work with date references. We need to update that so I ommitted it in the example so it works</p>
+<p>Note: it seems it currently does not work with date references. We need to update this so I omitted it in the example so it works.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6467,13 +7035,13 @@ refactored_blueprint.datasets(<span class="string"><span class="delimiter">'</sp
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_93">Problem</h4>
+<h4 id="_problem_104">Problem</h4>
 <div class="paragraph">
 <p>Occasionally you need to reconnect date dimensions. You did all the work on reports and last thing you are missing is to change all references in the model from one date dimension to another.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_93">Solution</h4>
+<h4 id="_solution_104">Solution</h4>
 <div class="paragraph">
 <p>With SDK you can use swap_date_dimension! method on blueprint. I will give you two examples one will be with a sample blueprint created on the fly the second will show you how to do the same on an existing project.</p>
 </div>
@@ -6539,6 +7107,78 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_taking_portion_of_a_project_model">Taking portion of a project model</h3>
+<div class="paragraph">
+<p>by Tomas Svarovsky</p>
+</div>
+<div class="sect3">
+<h4 id="_problem_105">Problem</h4>
+<div class="paragraph">
+<p>You have a project and you would like to create a new on with the same model but only portion of it.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_solution_105">Solution</h4>
+<div class="paragraph">
+<p>Blueprints can be easily manipulated because underneath they are just hashes of data. In the worst case you can always manipulate the hash and create the blueprint out of that. In some cases there are helper methods to make the code a little bit cleaner. In this example we will show an example where we will have a blueprint with two datasets and we will remove one of them so the new project will have just portion of the model.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># encoding: utf-8</span>
+
+require <span class="string"><span class="delimiter">'</span><span class="content">gooddata</span><span class="delimiter">'</span></span>
+
+<span class="constant">GoodData</span>.with_connection <span class="keyword">do</span> |client|
+
+  <span class="comment"># This is a blueprint</span>
+  <span class="comment"># We could grab it from live project via project.blueprint but we will just</span>
+  <span class="comment"># create it inline so we do not have to spin up additional project</span>
+
+  blueprint = <span class="constant">GoodData</span>::<span class="constant">Model</span>::<span class="constant">ProjectBlueprint</span>.build(<span class="string"><span class="delimiter">'</span><span class="content">Acme project</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |p|
+    p.add_date_dimension(<span class="string"><span class="delimiter">'</span><span class="content">committed_on</span><span class="delimiter">'</span></span>)
+
+    p.add_dataset(<span class="string"><span class="delimiter">'</span><span class="content">dataset.commits</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |d|
+      d.add_anchor(<span class="string"><span class="delimiter">'</span><span class="content">attr.commits.id</span><span class="delimiter">'</span></span>)
+      d.add_fact(<span class="string"><span class="delimiter">'</span><span class="content">fact.commits.lines_changed</span><span class="delimiter">'</span></span>)
+            d.add_attribute(<span class="string"><span class="delimiter">'</span><span class="content">attr.commits.name</span><span class="delimiter">'</span></span>)
+      d.add_label(<span class="string"><span class="delimiter">'</span><span class="content">label.commits.name</span><span class="delimiter">'</span></span>, <span class="key">reference</span>: <span class="string"><span class="delimiter">'</span><span class="content">attr.commits.name</span><span class="delimiter">'</span></span>)
+      d.add_date(<span class="string"><span class="delimiter">'</span><span class="content">committed_on</span><span class="delimiter">'</span></span>, <span class="symbol">:dataset</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">committed_on</span><span class="delimiter">'</span></span>)
+    <span class="keyword">end</span>
+
+    p.add_dataset(<span class="string"><span class="delimiter">'</span><span class="content">dataset.commits2</span><span class="delimiter">'</span></span>) <span class="keyword">do</span> |d|
+      d.add_anchor(<span class="string"><span class="delimiter">'</span><span class="content">attr.commits.id2</span><span class="delimiter">'</span></span>)
+      d.add_fact(<span class="string"><span class="delimiter">'</span><span class="content">fact.commits.lines_changed2</span><span class="delimiter">'</span></span>)
+            d.add_attribute(<span class="string"><span class="delimiter">'</span><span class="content">attr.commits.name2</span><span class="delimiter">'</span></span>)
+      d.add_label(<span class="string"><span class="delimiter">'</span><span class="content">label.commits.name2</span><span class="delimiter">'</span></span>, <span class="key">reference</span>: <span class="string"><span class="delimiter">'</span><span class="content">attr.commits.name2</span><span class="delimiter">'</span></span>)
+      d.add_date(<span class="string"><span class="delimiter">'</span><span class="content">committed_on</span><span class="delimiter">'</span></span>, <span class="symbol">:dataset</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">committed_on</span><span class="delimiter">'</span></span>)
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+
+  <span class="comment"># Now we need to manipulate it so it contains only portion of the model we want.</span>
+  <span class="comment"># In this case we want just dataset 'dataset.commits'.</span>
+  <span class="comment"># Take note that the project can be succesfully created only from a valid blueprint</span>
+  <span class="comment"># You can always check if the blueprint is valid by calling blueprint.valid?</span>
+  <span class="comment">#</span>
+
+  <span class="comment"># Let's remove the dataset</span>
+  <span class="comment"># We are going to user method remove_dataset! which means the blueprint will be changed in place</span>
+  <span class="comment"># You can also use remove_dataset in which case a new blueprint will be created and the old one will</span>
+  <span class="comment"># not be touched</span>
+  blueprint.remove_dataset!(<span class="string"><span class="delimiter">'</span><span class="content">dataset.commits2</span><span class="delimiter">'</span></span>)
+
+  <span class="comment"># Let's create a project based on the</span>
+  project = client.create_project_from_blueprint(blueprint, <span class="key">auth_token</span>: <span class="string"><span class="delimiter">'</span><span class="content">token</span><span class="delimiter">'</span></span>)
+
+  <span class="comment"># You can verify that the created project has only two datasets</span>
+  project.datasets.map(&amp;<span class="symbol">:identifier</span>)
+  <span class="comment"># =&gt; [&quot;dataset.commits&quot;, &quot;committed_on.dataset.dt&quot;]</span>
+
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -6550,18 +7190,18 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <p>by Tomas Svarovsky</p>
 </div>
 <div class="sect3">
-<h4 id="_problem_94">Problem</h4>
+<h4 id="_problem_106">Problem</h4>
 <div class="paragraph">
-<p>You would like to setup amd execute a lifecycle management configuration to distribute new versions of dashboards, reports, and metrics from a master template to multiple target projects.</p>
+<p>You would like to setup and execute a life-cycle management configuration to distribute new versions of dashboards, reports, and metrics from a master template to multiple target projects.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_solution_94">Solution</h4>
+<h4 id="_solution_106">Solution</h4>
 <div class="paragraph">
-<p>You can use lifecycle management API to create lifecycle segment, associate it with its master template project, and populate the segment with target projects that are going to receive the new versions of objects from the master template. First let&#8217;s align on the terminology.</p>
+<p>You can use life-cycle management API to create a life-cycle segment, associate it with its master template project, and populate the segment with target projects that are going to receive the new versions of objects from the master template. First let&#8217;s align on the terminology.</p>
 </div>
 <div class="paragraph">
-<p>Organization - Organization is an object that contains all users and projects that you or your company have provisoned to the GoodData platform. Organization can also contain whitelabeling configuration (your custom colors, logos, URLs etc.). Lifecycle management segments and projects are always set up within an organization.</p>
+<p>Organization - Organization is an object that contains all users and projects that you or your company have provisioned to the GoodData platform. Organization can also contain white-labeling configuration (your custom colors, logos, URLs etc.). Lifecycle management segments and projects are always set up within an organization.</p>
 </div>
 <div class="paragraph">
 <p>Lifecycle segment represents a group of projects that contain the same analytical objects. New versions of these objects can be distributed from so called master template project to the segment&#8217;s projects. The segment&#8217;s projects can also contain ad-hoc objects (e.g. reports or metrics) that are not touched (not updated nor deleted) by the lifecycle processes. Lifecycle segments are usually used to represent a different tiers (e.g. bronze/silver/gold) tiers of an analytical solution.</p>
@@ -6782,10 +7422,16 @@ segment.clients(<span class="string"><span class="delimiter">&quot;</span><span 
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_bin">Bin</h2>
+<div class="sectionbody">
+
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-26 11:21:27 +01:00
+Last updated 2017-04-13 13:21:58 CEST
 </div>
 </div>
 </body>
