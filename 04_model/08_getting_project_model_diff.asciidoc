@@ -1,0 +1,21 @@
+=== Project model diff
+by Vo Ha Tien
+
+==== Problem
+You need to get MAQL DLL as test instead of executing it via a blueprint.
+
+==== Solution
+Use project#maql_diff.
+
+[source,ruby]
+----
+# encoding: utf-8
+
+require 'gooddata'
+
+GoodData.with_connection do |c|
+  GoodData.with_project('project_pid') do |project|
+    project.maql_diff(blueprint: bp)
+  end
+end
+----
