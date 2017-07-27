@@ -170,6 +170,13 @@ blueprint = GoodData::Model::ProjectBlueprint.build("My project from blueprint")
 end
 ----
 
+You can easily create a fiscal date dimension with a specific urn. For example:
+
+[source,ruby]
+----
+p.add_date_dimension('created_on', urn: 'urn:pe:date')
+----
+
 ===== Defining references
 Typically in your model you need to reference other datasets. This is expressed in the blueprint builder with add_reference function. It takes only one parameter which is the identifier of referenced dataset. References do not have identifier since they are not represented as objects on the platform.
 
