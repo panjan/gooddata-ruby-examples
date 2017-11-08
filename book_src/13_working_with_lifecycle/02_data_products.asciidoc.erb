@@ -1,0 +1,17 @@
+=== Working with data products
+by Jakub Mahnert
+
+==== Problem
+You would like to encapsule multiple segments into a data product for better granularity.
+
+==== Solution
+
+This solution is based on the terminology and examples presented in chapter regarding <<01_wip_segments.asciidoc,Segments>>.
+
+This code will do several things:
+
+- sets up a segment in the legacy way, referencing no dataproduct
+- sets up another segment as a part of a dataproduct
+- shows that the segments are only included in the specific dataproduct that was used to create them
+
+<%= render_ruby 'src/13_working_with_lifecycle/data_product.rb' %>
