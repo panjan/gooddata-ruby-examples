@@ -16,7 +16,7 @@ require 'gooddata'
 
 GoodData.with_connection do |c|
   GoodData.with_project('project_id') do |project|
-    project.data_permissions.pmap {|f| [f.related.login, f.pretty_expression]}
+    project.data_permissions.pmap {|f| [f.related ? f.related.map! { |filter_user| filter_user.login }  : nil, f.pretty_expression]}
   end
 end
 
