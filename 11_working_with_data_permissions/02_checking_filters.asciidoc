@@ -16,18 +16,7 @@ require 'gooddata'
 
 GoodData.with_connection do |c|
   GoodData.with_project('project_id') do |project|
-    project.data_permissions.pmap {|filter| 
-      if !filter.related 
-      # filter is not assigned to any user, 'nil' is returned
-        [nil, filter.pretty_expression]
-      elsif filter.related.respond_to?(:login) 
-      # filter is assigned to single user, expect array of length 1
-        [[filter.related.login], filter.pretty_expression]
-      else
-      # filter is probably assigned to multiple users, array of logins is returned
-        [filter.related.map!(&:login), filter.pretty_expression] 
-      end
-    }
+    project.data_permissions.pmap {|f| [f.related.login, f.pretty_expression]}
   end
 end
 

@@ -6,7 +6,7 @@ You would like to encapsule multiple segments into a data product for better gra
 
 ==== Solution
 
-This solution is based on the terminology and examples presented in chapter regarding <<01_wip_segments.asciidoc#,Segments>>.
+This solution is based on the terminology and examples presented in chapter regarding <<01_wip_segments.asciidoc,Segments>>.
 
 This code will do several things:
 
